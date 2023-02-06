@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="44">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>15</ID>
+      <Description>"自动汇编脚本"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"MapleStory.exe"+833BC0) 
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov rdx,#40001001
+mov rax,rsp
+mov [rax+10],edx
+
+exit:
+jmp returnhere
+
+"MapleStory.exe"+833BC0:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"MapleStory.exe"+833BC0:
+db 48 8B C4 89 50 10
+//mov rax,rsp
+//mov [rax+10],edx
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>20</ID>
+      <Description>"换图不掉线"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+143C6E680:
+xor eax,eax
+ret
+
+
+ 
+ 
+[DISABLE]
+143C6E680:
+mov [rsp+10],rdx
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>21</ID>
+      <Description>"技能注入"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(newmem,2048,1439696F9)
+
+newmem:
+mov r8,#80001770
+mov [rbx+00020B04],r8
+jmp 1439696F9+13
+
+
+1439696F9:
+jmp newmem
+nop
+nop
+
+143969752:
+DB E9 92 01 00 00 90
+
+143969987:
+DB EB 57 90 90 90 90
+
+
+ 
+[DISABLE]
+dealloc(newmem)
+1439696F9:
+db 44 39 A3 04 0B 02 00
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>23</ID>
+      <Description>"技能注入2"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"143D71A4F)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+//2001002
+originalcode:
+cmp [rdi+00003D84],1
+
+exit:
+jmp returnhere
+
+143D71A4F:
+jmp newmem
+nop 2
+returnhere:
+
+143D71AF6:
+ mov edx,#80001770
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+143D71A4F:
+db 44 39 A7 84 3D 00 00
+//cmp [rdi+00003D84],r12d
+143D71AF6:
+ mov edx,04C4BAEA
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"宠物过滤"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(newmem,2048,140000000)
+alloc(Chong,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+Chong:
+dd #4000001 //蘑菇盖
+dd #2147483647 //所有金币
+
+newmem:
+originalcode:
+mov rax,Chong
+mov rcx,Chong+400
+
+exit:
+jmp returnhere
+
+1404BAB8F:
+jmp newmem
+nop 3
+returnhere:
+
+143780EDC:
+nop
+nop
+
+[DISABLE]
+dealloc(newmem)
+1404BAB8F:
+db 48 8B 43 28 48 8B 4B 30
+143780EDC:
+DB 74 1A
+dealloc(Chong)
+
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"技能永存"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+1436A4021:
+DB EB
+
+
+ 
+ 
+[DISABLE]
+1436A4021:
+DB 74
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>24</ID>
+      <Description>"无敌"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+1437EEA30:
+DB B8 01 00 00 00 C3
+
+
+ 
+ 
+[DISABLE]
+1437EEA30:
+DB 48 8B C4 55 53 56
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>25</ID>
+      <Description>"屏蔽蓝框"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+143A4C080:
+DB C3
+
+
+ 
+ 
+[DISABLE]
+143A4C080:
+DB 48
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"至圣领域--需进游戏"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+ [[145B1F230]+2488]+155C:
+ DB 63 4A 6B BA 53 5A D3 15 26 90 D9 85 9E 85 9C 8C 21 71 64 04 CD FC 15 9E
+
+ [DISABLE]
+ [[145B1F230]+2488]+155C:
+ DB D4 E1 23 38 0E 1F C1 A1 9C 8F D5 6D AF 68 CA 3D 45 53 EE 79 0A 90 29 8E
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"屏蔽数字"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+1419980B6:
+DB 90
+
+
+1422454C0:
+DB C3
+
+ 
+ 
+[DISABLE]
+1419980B6:
+DB 14
+
+1422454C0:
+DB 40
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"怪物0级"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,14075C646)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov eax ,1
+mov [rbx],eax
+mov rcx,rdi
+
+exit:
+jmp returnhere
+
+14075C646:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+14075C646:
+db 89 03 48 8B CF
+//mov [rbx],eax
+//mov rcx,rdi
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"面板修改"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,14050381B)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov ecx,#10000000
+mov [r14+38],ecx
+cmp qword ptr [rsi+08],00
+
+exit:
+jmp returnhere
+
+14050381B:
+jmp newmem
+nop 4
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+14050381B:
+db 41 89 4E 38 48 83 7E 08 00
+//mov [r14+38],ecx
+//cmp qword ptr [rsi+08],00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"宠物全屏吸物"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,141B51854)
+label(returnhere)
+label(originalcode)
+
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov [rbp+68],7FFFFFFF
+mov [rbp+60],80000000
+mov [rbp+64],80000000
+mov [rbp+6C],7FFFFFFF
+JMP 141B51888
+
+
+141B51854:
+jmp newmem
+nop 4
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+141B51854:
+db 39 75 60 0F 8F D1 13 00 00
+//cmp [rbp+60],esi
+//jg MapleStory.exe+1B52C3E
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"鼠飞"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,141F6CB00)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+sub rsp,00000128
+mov rcx,145B20310//需替换
+mov rcx,[rcx]
+lea rcx,[rcx+08]
+mov rax,[rcx]
+call qword ptr [rax+48]
+mov rcx,145B21140//需替换
+mov rcx,[rcx]
+mov rcx,[rcx+000009A0]
+mov r9d,[rcx+000000F4]
+mov r8d,[rcx+000000F0]
+mov rcx,rax
+mov rax,140A1DAA0//需替换
+call rax
+add rsp,00000128
+mov eax,[rcx+00000994]
+
+
+exit:
+jmp returnhere
+
+141F6CB00:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+141F6CB00:
+db 8B 81 94 09 00 00
+//mov eax,[rcx+00000994]
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>11</ID>
+      <Description>"技能无CD"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+1437C4F40:
+DB C3
+
+
+ 
+ 
+[DISABLE]
+1437C4F40:
+DB 48
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"全屏攻击"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+142327D73:
+DB EB
+
+
+ 
+ 
+[DISABLE]
+142327D73:
+DB 75
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"技能不耗蓝"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+143914C0D:
+jmp 14391519B
+
+
+ 
+[DISABLE]
+143914C0D:
+je 14391519B
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"全职业无延迟"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+1435C29B7:
+DB 90 90 90 90 90 90 90
+
+
+ 
+ 
+[DISABLE]
+1435C29B7:
+mov [rsi+000008BC],r13d
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>22</ID>
+      <Description>"添加隐藏技能"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,14083BA1C)
+alloc(Skill,4)//轮回技能
+label(returnhere)
+label(originalcode)
+label(exit)
+
+Skill:
+dd #80011261
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov r8d,[rcx+08]
+cmp r8d,[Skill]
+jne biaoji
+mov [rcx+38],00000001
+mov [rcx+000000B0],00000000
+biaoji:
+mov rcx,r13
+
+
+
+exit:
+jmp returnhere
+
+14083BA1C:
+jmp newmem
+nop 2
+returnhere:
+
+
+
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+14083BA1C:
+db 44 8B 41 08 49 8B CD
+//mov r8d,[rcx+08]
+//mov rcx,r13
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>19</ID>
+      <Description>"攻击不停止"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,14373C2F4)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov [rsi+00021154],00000000
+add rsp,30
+pop r15
+
+exit:
+jmp returnhere
+
+14373C2F4:
+jmp newmem
+nop
+returnhere:
+
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+14373C2F4:
+db 48 83 C4 30 41 5F
+//add rsp,30
+//pop r15
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
